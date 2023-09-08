@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Retro Games</title>
+		<script defer type="module" type="text/javascript" src="./src/nes.js"></script>
+	</head>
+	<body>
+		<div>
+			<canvas id="canvas"></canvas>
+		</div>
+		<style>
+			body {
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+
+				-webkit-user-select: none; /* Safari */
+				-moz-user-select: none; /* Firefox */
+				-ms-user-select: none; /* Internet Explorer */
+				user-select: none; /* Standard syntax */
+			}
+			#canvas {
+				height: 92vh;
+				/* border-radius: 4vh; */
+			}
+			@media screen and (max-width: 499px) {
+				#canvas {
+					width: 100vw;
+					height: auto;
+					border-radius: none;
+				}
+			}
+		</style>
+	</body>
+</html>
