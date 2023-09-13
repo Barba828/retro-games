@@ -17,7 +17,6 @@ let tempCanvas, tempCtx, tempImage;
 let framebuffer_u8, framebuffer_u32;
 
 if (!window.jsnes) {
-	// https://unpkg.com/jsnes/dist/jsnes.min.js
 	importScript('/packages/jsnes/dist/index.umd.js').then(async () => {
 		await initCanvas();
 		initNes();
@@ -263,7 +262,17 @@ const setButtons = () => {
 //   0xc7d1ff, 0x9adaff, 0x88edf8, 0x83ffdd, 0xb8f8b8, 0xf5f8ac, 0xffffb0, 0xf8d8f8, 0x000000,
 //   0x000000,
 // ];
-// const hexColors = curTable.map((num) => {
+
+// const curTableNew = [
+//   0x464646, 0xe53224, 0xf56042, 0xf224b8, 0xdf00ff, 0x6820f0, 0x1c29d7, 0x3564b0, 0x0a7e8c,
+//   0x04ac68, 0x2cdc5b, 0xd0b228, 0xcc7226, 0x272727, 0x000000, 0x000000, 0xa0b3e5, 0xff7b29,
+//   0xff4d6e, 0xff69b4, 0xff00cc, 0xb041ff, 0x4e73ff, 0x40b2ff, 0x18dca0, 0x43ff3e, 0xffff82,
+//   0xe0c242, 0xa0a0a0, 0x000000, 0x000000, 0xf2f2f2, 0xffc685, 0xff938d, 0xffaad4, 0xff81ff,
+//   0xff99ff, 0x8eb1ff, 0x58cffe, 0x00fff6, 0x30ff96, 0xb0de3c, 0xd2d22d, 0xd8d8d8, 0x000000,
+//   0x000000, 0xffffff, 0xfef4c0, 0xffd6c2, 0xfcd0ff, 0xffd6ff, 0xffd3ec, 0xd9c1ff, 0xa1c9ea,
+//   0x7ce2ff, 0x7fffd4, 0xdcffdc, 0xfafff0, 0xfff6c8, 0xfbeff4, 0x000000, 0x000000,
+// ];
+// const hexColors = [...curTable, ...curTableNew].map((num) => {
 //   let color = num.toString(16);
 //   while (color.length < 6) {
 //     color = '0' + color;
@@ -273,11 +282,11 @@ const setButtons = () => {
 
 // const canvas = document.getElementById('canvas');
 // canvas.setAttribute('width', 400);
-// canvas.setAttribute('height', 400);
+// canvas.setAttribute('height', 800);
 // const ctx = canvas.getContext('2d');
 
 // for (let i = 0; i < 8; i++) {
-//   for (let j = 0; j < 8; j++) {
+//   for (let j = 0; j < hexColors.length / 8; j++) {
 //     const index = i * 8 + j;
 //     ctx.fillStyle = hexColors[index];
 //     ctx.beginPath();

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { Dimensions } from 'react-native';
 import Canvas, { Image as CanvasImage } from 'react-native-canvas';
+import { setNes } from './utils/useNes';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -10,8 +11,7 @@ const imgSrc = require('./assets/static/bg_phone_1.png');
 
 export default function App() {
   const canvasRef = useRef<Canvas>(null);
-  const ctxRef = useRef<CanvasRenderingContext2D>(null);
-
+  
   useEffect(() => {
     if (!canvasRef.current) {
       return;
@@ -26,9 +26,13 @@ export default function App() {
     const asset = Image.resolveAssetSource(imgSrc).uri;
     img.src = asset;
     img.addEventListener('load', () => {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'green';
+      ctx.fillRect(20, 20, 300, 300);
     });
-  }, [canvasRef]);
+
+    setNes(canvas);
+  }, [canvasRef.current]);
 
   return <Canvas ref={canvasRef} style={styles.canvas} />;
 }

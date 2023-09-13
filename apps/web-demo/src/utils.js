@@ -28,6 +28,7 @@ export const importRom = async (path) => {
 		};
 		req.onload = function () {
 			if (this.status === 200) {
+				console.log('lnz loaded', this.responseText);
 				resolve(this.responseText);
 			} else if (this.status === 0) {
 				// Aborted, so ignore error
